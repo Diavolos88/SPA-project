@@ -1,0 +1,42 @@
+.addFilm {
+	max-width: 100%;
+	background-color: rgb(119, 119, 119);
+	display: grid;
+	grid-template-columns: 80px 230px;
+	padding: 10px;
+	border-radius: 10px;
+	margin-left: 50px;
+	width: 400px;
+	grid-gap: 5px;
+}
+
+.area {
+	resize: none;
+
+}
+
+.addFilm input {
+
+}
+
+.title {
+	font-size: 18px;
+	padding-bottom: 5px;
+	padding-left: 70px;
+}
+
+.fild {
+}
+
+.addButton {
+	width: 100px;
+	padding: 5px 0;
+	border-radius: 10px;
+	margin: 0 auto;
+	transition: 0.3s;
+	background: rgb(185, 183, 183);
+}
+
+.addButton:hover {
+	background: blue;
+}

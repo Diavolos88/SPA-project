@@ -1,0 +1,12 @@
+.preloader {
+    padding-top: 100px;
+    display: inline-block;
+    margin-left: 45%;
+    background: none;
+}
+
+.preloader__blok {
+    border-radius: 50%;
+    background: none;
+    height: 250px;
+}

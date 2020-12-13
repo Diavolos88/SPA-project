@@ -1,0 +1,55 @@
+.dialog {
+	height: 60vh;
+	background: rgb(170, 169, 169);
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	padding: 10px 30px 30px 30px;
+}
+
+.mess {
+	overflow: auto;
+	padding-top: 20px;
+	padding-left: 40px;
+}
+
+.sendFild {
+	height: 20vh;
+	background: rgb(45, 45, 45);
+	padding: 30px 30px 30px 30px;
+}
+
+.sendMesBut {
+	padding: 10px;
+	align-self: center;
+	border-radius: 10px;
+	margin: 20px;
+	transition: .3s;
+	font-size: 16px;
+
+}
+
+.formC {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	grid-gap: 20px;
+
+}
+
+.sendMesBut:hover {
+	background: blue;
+}
+
+.textArea {
+	padding-top: 22px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 18px;
+	border-radius: 10px;
+	resize: none;
+
+}
+
+.friends {
+	overflow: auto;
+	border-right: 2px solid rgb(77, 76, 76);
+}

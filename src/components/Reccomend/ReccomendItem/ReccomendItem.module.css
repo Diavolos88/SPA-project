@@ -1,0 +1,64 @@
+.item {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	min-height: 200px;
+	max-height: 200px;
+}
+
+.content {
+	padding: 5px 2px 5px 10px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	background-color: #c0c4c3;
+}
+
+.title {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.year {
+	text-align: right;
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+
+.disc {
+	font-size: 16px;
+	flex: 1 1 100%;
+	max-height: 80px;
+	overflow: auto;
+}
+
+.but {
+	padding-top: 10px;
+	margin: 0 auto;
+	color: blue;
+}
+
+.but button {
+	background: rgb(119, 116, 116);
+	padding: 10px 20px;
+}
+.item__img img {
+	min-height: 200px;
+	max-height: 200px;
+	max-width: 150px;
+	min-width: 150px;
+}
+
+.disc::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	border-width: 1px 1px 1px 2px;
+	border-color: #777;
+	background-color: #aaa;
+}
+
+.disc::-webkit-scrollbar {
+	border-radius: 40px;
+	width: 7px;
+	background-color: #fff;
+}

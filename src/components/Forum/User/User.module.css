@@ -1,0 +1,49 @@
+.user {
+	border-radius: 10px;
+	margin: 0 150px 50px 150px;
+	background: rgba(88, 87, 87, 0.801);
+	display: grid;
+	grid-template-columns: 100px 1fr;
+}
+
+.user__name {
+	padding-top: 30px;
+	text-align: center;
+}
+
+.ava {
+	padding: 10px 10px 10px 0;
+}
+
+.ava img {
+	margin-left: 25px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.content__title {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.content__mes {
+	overflow: auto;
+	max-height: 100px;
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+.footer {
+	padding: 10px 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.content__likes {
+	width: 100px;
+}
+
+.content__but {
+	width: 100px;
+}

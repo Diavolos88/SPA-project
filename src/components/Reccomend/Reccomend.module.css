@@ -1,0 +1,23 @@
+.rec {
+	padding-top: 100px;
+}
+
+.title {
+	text-align: center;
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.tabs {
+	padding-top: 30px;
+	display: grid;
+	grid-template-columns: 1fr 150px 150px 150px 150px 150px 1fr;
+	font-size: 20px;
+}
+
+.items {
+	margin: 50px 100px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 50px;
+}

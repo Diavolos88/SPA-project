@@ -1,0 +1,21 @@
+.menu {
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.menu a {
+	text-decoration: none;
+	color: black;
+	transition: 0.3s;
+}
+
+.menu :hover {
+	color: blue;
+	transform: scale(1.1);
+}
+
+.menu a.activeLink {
+	color: red;
+}

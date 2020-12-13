@@ -1,0 +1,37 @@
+
+
+
+.login {
+    margin-left: 40%;
+    padding-top: 200px;
+    align-self: center;
+}
+.login h1 {
+    margin-left: 5%;
+    font-size: 24px;
+    padding: 20px;
+}
+
+.loginForm {
+    font-size: 20px;
+
+}
+
+.loginForm input {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.loginForm button {
+    font-size: 16px;
+    margin-left: 50px;
+    padding: 5px 20px 5px 20px;
+    background: #575656;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.formSummaryError {
+    padding: 5px;
+    color: red;
+}

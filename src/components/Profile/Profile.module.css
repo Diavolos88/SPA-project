@@ -1,0 +1,70 @@
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 100px;
+    grid-gap: 100px;
+}
+
+.fullName {
+    font-size: 36px;
+    padding: 10px;
+    text-align: center;
+}
+.first__column {
+    padding: 0px 30px;
+    border-radius: 10px;
+    background: #c1bdbd;
+
+}
+
+.first__column img {
+    width: 300px;
+    height: 300px;
+}
+
+.first__column button {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: yellow;
+    cursor: pointer;
+}
+
+.second__column {
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 20px 100px;
+    background: grey;
+}
+
+.second__column span {
+    font-size: 26px;
+    display: block;
+
+}
+
+.aboutMe {
+    border-radius: 10px;
+    padding: 10px;
+    background: #c7c7cc;
+}
+
+.contacts {
+    border-radius: 10px;
+    background: #c7c7cc;
+    padding: 0 10px 10px 10px;
+
+}
+
+.contacts__item {
+    padding-top: 10px;
+}
+
+.second__column span {
+    display: block;
+    padding: 10px;
+}

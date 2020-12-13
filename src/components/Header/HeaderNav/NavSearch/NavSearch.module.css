@@ -1,0 +1,10 @@
+.search {
+	margin-top: 10px;
+	font-size: 16px;
+	background-color: #cfc9c9;
+	align-self: center;
+	justify-self: start;
+	padding: 8px 16px 8px 40px;
+	transition: 0.5s;
+	border-radius: 4px;
+}

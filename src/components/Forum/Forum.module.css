@@ -1,0 +1,38 @@
+.forum {
+	padding-top: 100px;
+}
+
+.formC {
+	border-radius: 10px;
+	padding: 20px;
+	background: #9f9a9a;
+	width: 500px;
+	margin-left: 150px;
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	grid-gap: 10px;
+}
+
+.formC span {
+	align-self: center;
+	font-size: 16px;
+	display: block;
+}
+
+.inputTitle {
+	padding: 5px;
+	font-size: 16px;
+}
+
+.inputDescription {
+	padding: 5px;
+	font-size: 16px;
+	resize: none;
+}
+
+.addPostButton {
+	padding: 5px 20px;
+	background: #7f7b7b;
+	font-size: 18px;
+	border-radius: 15px;
+}

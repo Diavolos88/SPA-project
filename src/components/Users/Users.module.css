@@ -1,0 +1,110 @@
+.followButton {
+    font-size: 16px;
+    background: #c9c16b;
+    margin: 3px;
+    padding: 3px 0;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.followButton:hover {
+    background: #aa773f;
+}
+
+.usersPage {
+    padding: 80px 200px;
+}
+
+.firstColumn {
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+.ava {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-left: 25px;
+}
+
+.info {
+    border-radius: 20px;
+    margin-left: 50px;
+    background: #8989aa;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.item {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.other {
+    font-size: 16px;
+}
+
+.county {
+    justify-self: end;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.status {
+    font-size: 18px;
+    font-style: italic;
+    padding-top: 20px;
+
+}
+
+.city {
+    padding-top: 20px;
+    justify-self: end;
+
+}
+
+.show {
+    font-size: 18px;
+    border-radius: 20px;
+    background: #e87a31;
+    margin-top: 40px;
+    padding: 20px 40px;
+    margin-left: 45%;
+    transition: .3s;
+}
+
+.show:hover {
+    background: #ba1010;
+}
+
+.newPage__block {
+    display: block;
+    padding-bottom: 50px;
+
+}
+
+.center {
+    /*display: inline-block;*/
+    text-align: center
+}
+
+.numbers {
+    display: inline-block;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.newPage {
+    font-weight: bold;
+    font-size: 20px;
+}

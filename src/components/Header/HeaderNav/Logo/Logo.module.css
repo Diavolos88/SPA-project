@@ -1,0 +1,16 @@
+.logo {
+	display: block;
+	align-self: center;
+	justify-self: center;
+}
+
+.logo a {
+	font-family: "SansitaSwashed", serif;
+	text-decoration: none;
+	font-size: 48px;
+	/* color: -o-linear-gradient(45deg, #0b2349 33%, #0d61bc 66%, #8aa9d6); */
+	/* color: linear-gradient(45deg, #0b2349 33%, #0d61bc 66%, #8aa9d6); */
+	color: #041735;
+	margin: 30px;
+	margin-right: 50px;
+}
