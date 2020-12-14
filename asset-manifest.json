@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/SPA-project/static/css/main.7456cfac.chunk.css",
-    "main.js": "/SPA-project/static/js/main.9d4df16b.chunk.js",
-    "main.js.map": "/SPA-project/static/js/main.9d4df16b.chunk.js.map",
-    "runtime-main.js": "/SPA-project/static/js/runtime-main.c710a0f1.js",
-    "runtime-main.js.map": "/SPA-project/static/js/runtime-main.c710a0f1.js.map",
-    "static/js/2.f83fc729.chunk.js": "/SPA-project/static/js/2.f83fc729.chunk.js",
-    "static/js/2.f83fc729.chunk.js.map": "/SPA-project/static/js/2.f83fc729.chunk.js.map",
+    "main.css": "/SPA-project/static/css/main.7dcb2808.chunk.css",
+    "main.js": "/SPA-project/static/js/main.20bab638.chunk.js",
+    "main.js.map": "/SPA-project/static/js/main.20bab638.chunk.js.map",
+    "runtime-main.js": "/SPA-project/static/js/runtime-main.c076b624.js",
+    "runtime-main.js.map": "/SPA-project/static/js/runtime-main.c076b624.js.map",
+    "static/js/2.966a5f43.chunk.js": "/SPA-project/static/js/2.966a5f43.chunk.js",
+    "static/js/2.966a5f43.chunk.js.map": "/SPA-project/static/js/2.966a5f43.chunk.js.map",
     "static/css/3.16328952.chunk.css": "/SPA-project/static/css/3.16328952.chunk.css",
-    "static/js/3.4efb76cc.chunk.js": "/SPA-project/static/js/3.4efb76cc.chunk.js",
-    "static/js/3.4efb76cc.chunk.js.map": "/SPA-project/static/js/3.4efb76cc.chunk.js.map",
+    "static/js/3.09534e1d.chunk.js": "/SPA-project/static/js/3.09534e1d.chunk.js",
+    "static/js/3.09534e1d.chunk.js.map": "/SPA-project/static/js/3.09534e1d.chunk.js.map",
     "static/css/4.b93aa318.chunk.css": "/SPA-project/static/css/4.b93aa318.chunk.css",
-    "static/js/4.fa9b0dda.chunk.js": "/SPA-project/static/js/4.fa9b0dda.chunk.js",
-    "static/js/4.fa9b0dda.chunk.js.map": "/SPA-project/static/js/4.fa9b0dda.chunk.js.map",
+    "static/js/4.4f4a68f6.chunk.js": "/SPA-project/static/js/4.4f4a68f6.chunk.js",
+    "static/js/4.4f4a68f6.chunk.js.map": "/SPA-project/static/js/4.4f4a68f6.chunk.js.map",
     "static/js/5.c2bf7814.chunk.js": "/SPA-project/static/js/5.c2bf7814.chunk.js",
     "static/js/5.c2bf7814.chunk.js.map": "/SPA-project/static/js/5.c2bf7814.chunk.js.map",
     "index.html": "/SPA-project/index.html",
     "static/css/3.16328952.chunk.css.map": "/SPA-project/static/css/3.16328952.chunk.css.map",
     "static/css/4.b93aa318.chunk.css.map": "/SPA-project/static/css/4.b93aa318.chunk.css.map",
-    "static/css/main.7456cfac.chunk.css.map": "/SPA-project/static/css/main.7456cfac.chunk.css.map",
-    "static/js/2.f83fc729.chunk.js.LICENSE.txt": "/SPA-project/static/js/2.f83fc729.chunk.js.LICENSE.txt",
+    "static/css/main.7dcb2808.chunk.css.map": "/SPA-project/static/css/main.7dcb2808.chunk.css.map",
+    "static/js/2.966a5f43.chunk.js.LICENSE.txt": "/SPA-project/static/js/2.966a5f43.chunk.js.LICENSE.txt",
     "static/media/App.css": "/SPA-project/static/media/white-buds.cd9f3c50.webp"
   },
   "entrypoints": [
-    "static/js/runtime-main.c710a0f1.js",
-    "static/js/2.f83fc729.chunk.js",
-    "static/css/main.7456cfac.chunk.css",
-    "static/js/main.9d4df16b.chunk.js"
+    "static/js/runtime-main.c076b624.js",
+    "static/js/2.966a5f43.chunk.js",
+    "static/css/main.7dcb2808.chunk.css",
+    "static/js/main.20bab638.chunk.js"
   ]
 }
