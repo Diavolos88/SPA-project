@@ -9,6 +9,7 @@ const StatusWithHooks = (props) => {
     useEffect(() => {
         setStatus(props.status)
     }, [props.status])
+
     const activateEditMode = () => {
         setEditMode(true)
     }
@@ -25,7 +26,7 @@ const StatusWithHooks = (props) => {
         return (
             <div>
                 <span
-                    onDoubleClick={activateEditMode}>{props.status ? props.status : '***Update status***'}</span>
+                    onDoubleClick={activateEditMode}>{props.status ? props.status : '***Use double-click for change status***'}</span>
             </div>
         );
     } else {
@@ -33,7 +34,7 @@ const StatusWithHooks = (props) => {
             <div>
                 <input onChange={onStatusStage}
                        autoFocus={true} onBlur={deActivateEditMode} className={s.inputField}
-                       value={status ? status : '***Update status***'}/>
+                       value={status ? status : ''}/>
             </div>
         );
     }

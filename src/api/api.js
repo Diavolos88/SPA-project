@@ -36,5 +36,18 @@ export const usersAPI = {
     },
     logout() {
         return instans.delete(`auth/login`)
+    },
+    savePhoto(photoFile) {
+        const formData = new FormData()
+        formData.append("image", photoFile)
+
+        return instans.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type' : 'multipart/form-data'
+            }
+        })
+    },
+    saveProfile(profile) {
+        return instans.put(`profile/`, profile)
     }
 }

@@ -27,7 +27,7 @@ export const initializedSuccess = () => {
 }
 
 export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(initializedSuccess(getMe()))
+    let promise = dispatch(getMe())
     if (promise) {
         dispatch(initializedSuccess())
     }

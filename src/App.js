@@ -20,6 +20,8 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
+        debugger
+
     }
 
     render() {

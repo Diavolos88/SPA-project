@@ -56,6 +56,7 @@ export const getMe = () => {
     return async (dispatch) => {
         let response = await usersAPI.author()
         let {login, id, email} = response.data
+        debugger
         if (response.resultCode === 0) {
             dispatch(setUserData(id, email, login, true))
             usersAPI.getOneUser(id).then(response => {
