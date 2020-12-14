@@ -29,9 +29,9 @@ export const usersAPI = {
     updateUserStatus(status) {
         return instans.put(`profile/status`, {status:status})
     },
-    login(email, password, rememberMe = false) {
+    login(email, password, rememberMe = false, captcha = null) {
         return instans.post(`auth/login`, {
-            email, password, rememberMe
+            email, password, rememberMe, captcha
         })
     },
     logout() {
@@ -49,5 +49,12 @@ export const usersAPI = {
     },
     saveProfile(profile) {
         return instans.put(`profile/`, profile)
+    }
+}
+
+
+export const securityAPI = {
+    getCaptchaUrl() {
+        return instans.put(`/security/get-captcha-url`)
     }
 }

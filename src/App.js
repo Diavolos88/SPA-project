@@ -1,13 +1,13 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import {Route} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 import Dialogs from './components/Dialogs/Dialogs';
 import ReccomendContainer from "./components/Reccomend/ReccomendContainer";
 // import ProfileContainer from "./components/Profile/ProfileContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {withRouter} from "react-router";
+import {withRouter,  Switch} from "react-router";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/preloader/Preloader";
@@ -18,10 +18,13 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
+    // catchAllErrors(error) {
+        // alert(error)
+    // }
+
     componentDidMount() {
         this.props.initializeApp()
-        debugger
-
+        // window.addEventListener("unhandledrejection", this.catchAllErrors)
     }
 
     render() {
@@ -31,12 +34,16 @@ class App extends React.Component {
             return (
                 <div className='app-wrapper'>
                     <Header/>
-                    <Route exact path='/' render={() => <ReccomendContainer/>}/>
-                    {/*<Route path='/forum' render={() => <Forum store={props.store}/>}/>*/}
-                    <Route path='/dialogs' render={() => <Dialogs/>}/>
-                    <Route path='/users' render={withSuspense(UsersContainer)}/>
-                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                    <Switch>
+                        <Route exact path='/' render={ () => <Redirect to={"profile"} />}/>
+                        <Route exact path='/films' render={() => <ReccomendContainer/>}/>
+                        {/*<Route path='/forum' render={() => <Forum store={props.store}/>}/>*/}
+                        <Route path='/dialogs' render={() => <Dialogs/>}/>
+                        <Route path='/users' render={withSuspense(UsersContainer)}/>
+                        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='*' render={() => <div className={"notFound"}>404 NOT FOUND</div>}/>
+                    </Switch>
                 </div>
             );
         }

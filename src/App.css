@@ -99,3 +99,10 @@ h6 {
 	height: 500px;
 	padding-top: 200px;
 }
+
+.notFound {
+	padding-top: 200px;
+	text-align: center;
+	color: red;
+	font-size: 36px;
+}

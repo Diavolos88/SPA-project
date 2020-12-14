@@ -12,7 +12,7 @@ const maxLenght10 = maxLenghtCreator(10)
 const Login = (props) => {
 
     const onSubmitw = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     debugger
     if (props.isAuth) return <Redirect to={'/profile'}/>
@@ -20,7 +20,7 @@ const Login = (props) => {
         return (
             <div className={s.login}>
                 <h1>Login</h1>
-                <LoginReduxForm onSubmit={onSubmitw}/>
+                <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmitw}/>
             </div>
         );
     }
@@ -40,6 +40,10 @@ const LoginForm = (props) => {
             <div>
                 <Field type={"checkbox"} name={"rememberMe"} component={"input"}/> remember me
             </div>
+            {props.captchaUrl ? <div><img src={props.captchaUrl}/></div> : <div></div>}
+            {props.captchaUrl ?
+                <div><Field type={"text"} name={"captcha"} component={"input"}
+                            validate={[required]}/></div> : <div></div>}
             <div className={s.formSummaryError}>{props.error}</div>
             <div>
                 <button>Login</button>
@@ -48,14 +52,21 @@ const LoginForm = (props) => {
     );
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login'
-})(LoginForm)
+const LoginReduxForm = reduxForm(
+    {
+        form: 'login'
+    }
+)(LoginForm)
 
-const mapStateToProps = (state) =>({
-    isAuth : state.auth.isAuth
-})
+const mapStateToProps = (state) => {
+    return ({
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
+    });
+}
 
-export default connect(mapStateToProps, {
-    login
-})(Login);
+export default connect(mapStateToProps,
+    {
+        login
+    }
+)(Login);
