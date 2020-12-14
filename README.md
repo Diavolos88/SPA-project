@@ -9,4 +9,6 @@ password: free
 
 now working: 
 a uthorization,
-pages: users, profile, profile of each user, you can test(subscribe/unsubscribe and change the status/avatar, your info)
+pages: users, profile, profile of each user
+
+you can test(subscribe/unsubscribe and change the status/avatar, your info)
