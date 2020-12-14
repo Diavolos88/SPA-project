@@ -9,4 +9,4 @@ password: free
 
 now working: 
 a uthorization
-pages: users, profile, profile of each user, you can subscribe/unsubscribe and change the status
+pages: users, profile, profile of each user, you can subscribe/unsubscribe and change the status/avatar
