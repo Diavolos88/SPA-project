@@ -1,12 +1,12 @@
 # Getting Started with Create React App
 
-My first project <b>(SPA)</b>, written in <b>react + redux</b>, posted on <b>GitHub Pages</b> link https://diavolos88.github.io/SPA-project/
+My first project (SPA), written in react + redux, posted on GitHub Pages link https://diavolos88.github.io/SPA-project/
 
-now you can`t to registration, only use login and password for testing (will fix it soon)
+Right now you can`t to register, you can use login and password for testing (it`ll be fixed soon)
 
 login: free@samuraijs.com 
 password: free
 
 now working: 
-a uthorization
-pages: users, profile, profile of each user, you can subscribe/unsubscribe and change the status/avatar
+a uthorization,
+pages: users, profile, profile of each user, you can test(subscribe/unsubscribe and change the status/avatar, your info)
