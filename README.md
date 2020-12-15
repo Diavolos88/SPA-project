@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# React App social network
 
 My first project (SPA), written in react + redux, posted on GitHub Pages link https://diavolos88.github.io/SPA-project/
 
