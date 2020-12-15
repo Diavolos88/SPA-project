@@ -9,7 +9,7 @@ let ProfileData = (props) => {
         <div className={s.second__column}>
             <span>Status:</span>
             <div className={s.statusField}><StatusWithHooks status={props.status}
-                                                            updateUserStatus={props.updateUserStatus}/></div>
+                                                            updateUserStatus={props.updateUserStatus} isOwner={props.isOwner}/></div>
             <span>Looking for a job : {props.profile.lookingForAJob ? "Yes" : "No"}</span>
             <span>About my future work: <div
                 className={s.lookingForAJobDesc}>{props.profile.lookingForAJob ? props.profile.lookingForAJobDescription : "No"}</div></span>

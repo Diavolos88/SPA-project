@@ -11,7 +11,9 @@ const StatusWithHooks = (props) => {
     }, [props.status])
 
     const activateEditMode = () => {
-        setEditMode(true)
+        if (!props.isOwner) {
+            setEditMode(true)
+        }
     }
 
     const onStatusStage = (e) => {
