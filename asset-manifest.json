@@ -3,13 +3,13 @@
     "main.css": "/SPA-project/static/css/main.7dcb2808.chunk.css",
     "main.js": "/SPA-project/static/js/main.096d1242.chunk.js",
     "main.js.map": "/SPA-project/static/js/main.096d1242.chunk.js.map",
-    "runtime-main.js": "/SPA-project/static/js/runtime-main.c076b624.js",
-    "runtime-main.js.map": "/SPA-project/static/js/runtime-main.c076b624.js.map",
+    "runtime-main.js": "/SPA-project/static/js/runtime-main.b9f9a7fe.js",
+    "runtime-main.js.map": "/SPA-project/static/js/runtime-main.b9f9a7fe.js.map",
     "static/js/2.966a5f43.chunk.js": "/SPA-project/static/js/2.966a5f43.chunk.js",
     "static/js/2.966a5f43.chunk.js.map": "/SPA-project/static/js/2.966a5f43.chunk.js.map",
     "static/css/3.16328952.chunk.css": "/SPA-project/static/css/3.16328952.chunk.css",
-    "static/js/3.09534e1d.chunk.js": "/SPA-project/static/js/3.09534e1d.chunk.js",
-    "static/js/3.09534e1d.chunk.js.map": "/SPA-project/static/js/3.09534e1d.chunk.js.map",
+    "static/js/3.e8d5f1c5.chunk.js": "/SPA-project/static/js/3.e8d5f1c5.chunk.js",
+    "static/js/3.e8d5f1c5.chunk.js.map": "/SPA-project/static/js/3.e8d5f1c5.chunk.js.map",
     "static/css/4.b93aa318.chunk.css": "/SPA-project/static/css/4.b93aa318.chunk.css",
     "static/js/4.4f4a68f6.chunk.js": "/SPA-project/static/js/4.4f4a68f6.chunk.js",
     "static/js/4.4f4a68f6.chunk.js.map": "/SPA-project/static/js/4.4f4a68f6.chunk.js.map",
@@ -23,7 +23,7 @@
     "static/media/App.css": "/SPA-project/static/media/white-buds.cd9f3c50.webp"
   },
   "entrypoints": [
-    "static/js/runtime-main.c076b624.js",
+    "static/js/runtime-main.b9f9a7fe.js",
     "static/js/2.966a5f43.chunk.js",
     "static/css/main.7dcb2808.chunk.css",
     "static/js/main.096d1242.chunk.js"
