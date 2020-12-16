@@ -5,6 +5,7 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA = 'SET_USER_DATA'
 const SET_USER_AVA = 'SET_USER_AVA'
 const GET_CAPTCHA_URL_SACCESS = 'GET_CAPTCHA_URL_SACCESS'
+const UPDATE_AUTH_AVA = 'UPDATE_AUTH_AVA'
 
 let initialState = {
     userId: null,
@@ -71,7 +72,6 @@ export const getMe = () => {
     return async (dispatch) => {
         let response = await usersAPI.author()
         let {login, id, email} = response.data
-        debugger
         if (response.resultCode === 0) {
             dispatch(setUserData(id, email, login, true))
             usersAPI.getOneUser(id).then(response => {

@@ -1,5 +1,10 @@
 import React from 'react';
-import {addMessage} from "../../../redux/dialogReducer";
+import {
+    deleteAllFriends, deleteAllMessage,
+    getAllMessages,
+    sendMessages,
+    updateAllFriends
+} from "../../../redux/dialogReducer";
 import Dialog from "./Dialog";
 import {connect} from "react-redux";
 
@@ -14,8 +19,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewMessage: (message) => {
-            dispatch(addMessage(message))
+        sendMessages: (message, id) => {
+            dispatch(sendMessages(message, id))
+        },
+        updateAllFriends : (page) => {
+            dispatch(updateAllFriends(page))
+        },
+        deleteAllFriends: () => {
+            dispatch(deleteAllFriends())
+        },getAllMessages: (id) => {
+            dispatch(getAllMessages(id))
+        },
+        deleteAllMessage: () => {
+            dispatch(deleteAllMessage())
         }
     }
 }

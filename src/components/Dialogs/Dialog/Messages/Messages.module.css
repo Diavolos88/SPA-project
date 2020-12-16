@@ -1,6 +1,8 @@
 .mes {
+	justify-self: left;
 	padding: 15px;
 	font-size: 18px;
+	padding-right: 100px;
 }
 
 .mes span {
@@ -9,4 +11,14 @@
 	min-width: 200px;
 	display: inline-block;
 	background: #6c6cf5;
+}
+
+.mesForMe{
+	padding-right: 15px;
+	padding-left: 100px;
+	justify-self: right;
+}
+
+.mesForMe span{
+	background: #c92c2c;
 }

@@ -1,5 +1,6 @@
 import {usersAPI as getOneUser, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {getMe, setUserAva, setUserData} from "./authReducer";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
@@ -94,6 +95,15 @@ export const savePhoto = (photo) => {
         usersAPI.savePhoto(photo).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(savePhotoSaccess(photo))
+                usersAPI.author().then((response) => {
+                    let {login, id, email} = response.data
+                    if (response.resultCode === 0) {
+                        dispatch(setUserData(id, email, login, true))
+                        usersAPI.getOneUser(id).then(response => {
+                            dispatch(setUserAva(response.photos.small))
+                        })
+                    }
+                })
             }
         })
     }
@@ -112,5 +122,7 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         return Promise.reject(response.data.messages[0])
     }
 }
+
+
 
 export default profileReduser

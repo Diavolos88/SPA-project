@@ -49,6 +49,18 @@ export const usersAPI = {
     },
     saveProfile(profile) {
         return instans.put(`profile/`, profile)
+    },
+    getFriends(page) {
+        return instans.get(`users?page=${page}&friend=${true}`
+        ).then(response => response.data)
+    },
+    getMessages(id) {
+        return instans.get(`dialogs/${id}/messages`
+        ).then(response => response.data)
+    },
+    sendNewMessages(message, id) {
+        return instans.post(`dialogs/${id}/messages`,{body: message}
+    )
     }
 }
 

@@ -7,6 +7,7 @@
 }
 
 .mess {
+	display: grid;
 	overflow: auto;
 	padding-top: 20px;
 	padding-left: 40px;
@@ -50,6 +51,22 @@
 }
 
 .friends {
+	height: 50vh;
 	overflow: auto;
 	border-right: 2px solid rgb(77, 76, 76);
+}
+
+.buttonLoadFriends {
+	margin-top: 10px;
+	margin-left: 40px;
+	padding: 5px 20px;
+	background: #474760;
+	border-radius: 15px;
+}
+
+.noOne {
+	padding-top: 200px;
+	text-align: center;
+	color: red;
+	font-size: 36px;
 }

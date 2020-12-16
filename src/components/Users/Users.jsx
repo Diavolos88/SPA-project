@@ -1,7 +1,5 @@
 import React from 'react';
 import s from './Users.module.css';
-import minion from '../../img/minion.png'
-import {NavLink} from "react-router-dom";
 import Paginator from "./Paginator";
 import User from "./User";
 
