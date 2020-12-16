@@ -1,12 +1,16 @@
-# Getting Started with Create React App
+# React App social network
 
-My first project <b>(SPA)</b>, written in <b>react + redux</b>, posted on <b>GitHub Pages</b> link https://diavolos88.github.io/SPA-project/
+My first project (SPA), written in react + redux, posted on GitHub Pages link https://diavolos88.github.io/SPA-project/
 
-now you can`t to registration, only use login and password for testing (will fix it soon)
+Right now you can`t to register, you can use login and password for testing (don`t use please incognito mode):
 
 login: free@samuraijs.com 
 password: free
 
+or you can register here: https://social-network.samuraijs.com/ (unfortunately, so far it is impossible to register from my page)
+
 now working: 
-a uthorization
-pages: users, profile, profile of each user, you can subscribe/unsubscribe and change the status/avatar
+a uthorization,
+pages: users, profile, profile of each user
+
+you can test(subscribe/unsubscribe, message with someone (first you need to add each other as friends) and change the status/avatar, your info)
