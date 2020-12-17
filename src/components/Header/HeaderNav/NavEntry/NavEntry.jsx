@@ -8,9 +8,9 @@ const NavEntry = (props) => {
         return (
             <div className={s.entry}>
                 <div>Hello {props.login}!</div>
-                <img src={props.ava ? props.ava : ava}/>
+                <NavLink to={"/login"}> <img src={props.ava ? props.ava : ava}/></NavLink>
                 <div className={s.logout}>
-                    <NavLink onClick={props.logout} to={"/login"} activeClassName={s.activeLink} >Log out</NavLink>
+                    <NavLink onClick={props.logout} to={"/login"} activeClassName={s.activeLink}>Log out</NavLink>
                     {/*<button onClick={props.logout}>Log out</button>*/}
                 </div>
             </div>

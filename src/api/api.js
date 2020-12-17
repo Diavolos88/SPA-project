@@ -27,7 +27,7 @@ export const usersAPI = {
         return instans.get(`profile/status/` + id).then(response => response).then(response => response.data)
     },
     updateUserStatus(status) {
-        return instans.put(`profile/status`, {status:status})
+        return instans.put(`profile/status`, {status: status})
     },
     login(email, password, rememberMe = false, captcha = null) {
         return instans.post(`auth/login`, {
@@ -43,7 +43,7 @@ export const usersAPI = {
 
         return instans.put(`profile/photo`, formData, {
             headers: {
-                'Content-Type' : 'multipart/form-data'
+                'Content-Type': 'multipart/form-data'
             }
         })
     },
@@ -59,8 +59,11 @@ export const usersAPI = {
         ).then(response => response.data)
     },
     sendNewMessages(message, id) {
-        return instans.post(`dialogs/${id}/messages`,{body: message}
-    )
+        return instans.post(`dialogs/${id}/messages`, {body: message}
+        )
+    },
+    checkNewMessages() {
+        return instans.get(`dialogs/messages/new/count`).then(response => response.data)
     }
 }
 

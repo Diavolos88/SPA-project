@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Dialog.module.css';
-import {Field, reduxForm} from "redux-form";
+import {reset, Field, reduxForm} from "redux-form";
 import {updateAllFriends} from "../../../redux/dialogReducer";
 import Friends from "./Friends/Friends";
-import {Redirect} from "react-router-dom";
+import {Link, animateScroll as scroll} from "react-scroll"
 import minion from '../../../img/minion.png'
 import Messages from "./Messages/Messages";
+import {usersAPI} from "../../../api/api";
 
 class Dialog extends React.Component {
 
@@ -13,13 +14,26 @@ class Dialog extends React.Component {
         super()
         this.state = {
             countPage: 1,
-            id: 0
+            id: 0,
+            timerID: 0,
+            el: 0
         }
     }
 
     componentDidMount() {
         this.props.deleteAllMessage()
         this.props.updateAllFriends(this.state.countPage)
+        this.state.timerID = setInterval(
+            () => {
+                usersAPI.checkNewMessages().then((response) => {
+                    if (response) {
+                        this.props.deleteAllMessage()
+                        this.props.getAllMessages(this.state.id)
+                    }
+                })
+            },
+            1000
+        );
     }
 
     componentDidUpdate() {
@@ -31,6 +45,7 @@ class Dialog extends React.Component {
 
     componentWillUnmount() {
         this.props.deleteAllFriends()
+        clearInterval(this.state.timerID);
     }
 
     loadFriends = () => {
@@ -43,6 +58,7 @@ class Dialog extends React.Component {
         this.props.getAllMessages(id)
         this.state.id = id
     }
+
 
     render() {
         if (this.props.friendData.length > 0) {
@@ -65,11 +81,9 @@ class Dialog extends React.Component {
                 this.props.deleteAllMessage()
                 this.props.sendMessages(values.newMessage, this.state.id)
             }
-            if (!this.props.isAuth) {
-                return (<Redirect to={'/login'}/>)
-            }
+
             return (
-                <div>
+                <div className={s.win}>
                     <div className={s.dialog}>
                         <div>
                             <div className={s.friends}>
@@ -80,9 +94,7 @@ class Dialog extends React.Component {
                                 </button>
                             </div>
                         </div>
-                        <div className={s.mess}>
-                            {mesElements}
-                        </div>
+                        <PrintMessages mesElements={mesElements}/>
                     </div>
                     <div className={s.sendFild}>
                         <AddMessageFormRedux onSubmit={addNewMessage}/>
@@ -98,6 +110,28 @@ class Dialog extends React.Component {
     }
 }
 
+class PrintMessages extends React.Component {
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView();
+    }
+
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    render() {
+        return (
+            <div className={s.mess}>
+                {this.props.mesElements}
+                <div ref={el => { this.messagesEnd = el}}></div>
+            </div>);
+    }
+}
+
 const
     AddMessageForm = (props) => {
         return (
@@ -108,8 +142,9 @@ const
             </form>
         );
     }
+const afterSubmit = (result, dispatch) => dispatch(reset('dialogAddMessageForm'));
 
 const
-    AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
+    AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm", onSubmitSuccess: afterSubmit,})(AddMessageForm)
 
 export default Dialog;

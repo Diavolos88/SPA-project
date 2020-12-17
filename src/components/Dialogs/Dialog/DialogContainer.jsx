@@ -37,7 +37,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
 const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
 
 export default DialogContainer;
