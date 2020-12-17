@@ -127,3 +127,13 @@
     padding-left: 10px;
     font-size: 18px;
 }
+
+.sendMessagesTo{
+    color: #993535;
+    margin-top: 10px;
+    background: yellow;
+    display: inline-block;
+    padding: 5px 20px;
+    margin-left: 25%;
+    border-radius: 15px;
+}

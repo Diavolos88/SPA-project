@@ -1,9 +1,14 @@
 import * as axios from "axios"
 
-const instans = axios.create({
+let API1 = '8590e90d-01e0-4847-847c-db8ee78fb5fe'
+let API2 = '22395bfc-7398-496d-9f45-225bad08b7ff'
+let API3 = '9231f2ee-2112-4390-9b16-f5a875f052b1'
+
+let instans = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: {"API-KEY": '8590e90d-01e0-4847-847c-db8ee78fb5fe'}
+    headers: {
+        "API-KEY": API1}
 });
 
 export const usersAPI = {
@@ -18,7 +23,31 @@ export const usersAPI = {
         return instans.delete(`follow/${id}`).then(response => response.data)
     },
     author() {
-        return instans.get(`auth/me/`).then(response => response.data)
+        return instans.get(`auth/me/`).then(response =>
+        {
+            if (response.data.data.id === 13370) {
+                instans = axios.create({
+                    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+                    withCredentials: true,
+                    headers: {
+                        "API-KEY":API2}
+                });
+            } else if (response.data.data.id === 13292){
+                instans = axios.create({
+                    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+                    withCredentials: true,
+                    headers: {"API-KEY":API3}
+                });
+            }else {
+                instans = axios.create({
+                    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+                    withCredentials: true,
+                    headers: {
+                        "API-KEY":API1}
+                });
+            }
+            return response.data
+        })
     },
     getOneUser(id) {
         return instans.get(`profile/` + id).then(response => response.data)
