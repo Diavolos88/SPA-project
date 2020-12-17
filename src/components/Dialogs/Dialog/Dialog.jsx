@@ -16,7 +16,8 @@ class Dialog extends React.Component {
             countPage: 1,
             id: 0,
             timerID: 0,
-            el: 0
+            el: 0,
+            lastMessage: 0
         }
     }
 
@@ -27,8 +28,18 @@ class Dialog extends React.Component {
             () => {
                 usersAPI.checkNewMessages().then((response) => {
                     if (response) {
-                        this.props.deleteAllMessage()
-                        this.props.getAllMessages(this.state.id)
+                        let newLast = 0
+                        let mesElements = this.props.mesData.map((mes) => {
+                            if (mes.recipientId === this.state.id) {
+                                newLast = mes.id
+                            } else if (mes.senderId === this.state.id) {
+                                newLast = mes.id
+                            }
+                        })
+                        if (newLast !== this.state.lastMessage) {
+                            this.props.deleteAllMessage()
+                            this.props.getAllMessages(this.state.id)
+                        }
                     }
                 })
             },
@@ -59,7 +70,6 @@ class Dialog extends React.Component {
         this.state.id = id
     }
 
-
     render() {
         if (this.props.friendData.length > 0) {
             let mesElements
@@ -71,15 +81,20 @@ class Dialog extends React.Component {
             if (this.props.mesData.length > 0) {
                 mesElements = this.props.mesData.map((mes) => {
                     if (mes.recipientId === this.state.id) {
+                        this.state.lastMessage = mes.id
                         return <Messages mes={mes.body} id={mes.id}/>
                     } else if (mes.senderId === this.state.id) {
+                        this.state.lastMessage = mes.id
                         return <Messages classMe={true} mes={mes.body} id={mes.id}/>
                     }
                 })
             }
             let addNewMessage = (values) => {
-                this.props.deleteAllMessage()
-                this.props.sendMessages(values.newMessage, this.state.id)
+                debugger
+                if (values.newMessage) {
+                    this.props.deleteAllMessage()
+                    this.props.sendMessages(values.newMessage, this.state.id)
+                }
             }
 
             return (
@@ -127,7 +142,9 @@ class PrintMessages extends React.Component {
         return (
             <div className={s.mess}>
                 {this.props.mesElements}
-                <div ref={el => { this.messagesEnd = el}}></div>
+                <div ref={el => {
+                    this.messagesEnd = el
+                }}></div>
             </div>);
     }
 }
