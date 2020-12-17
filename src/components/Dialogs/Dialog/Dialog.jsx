@@ -17,7 +17,8 @@ class Dialog extends React.Component {
             id: 0,
             timerID: 0,
             el: 0,
-            lastMessage: 0
+            lastMessage: 0,
+            first: true
         }
     }
 
@@ -49,7 +50,12 @@ class Dialog extends React.Component {
 
     componentDidUpdate() {
         if (this.props.friendData.length > 0 && this.state.id == 0) {
-            this.state.id = this.props.friendData[0].id
+            if (!this.props.match.params.userId) {
+                this.state.first = true
+                this.state.id = this.props.friendData[0].id
+            } else {
+                this.state.id = Number(this.props.match.params.userId)
+            }
             this.props.getAllMessages(this.state.id)
         }
     }
@@ -73,12 +79,20 @@ class Dialog extends React.Component {
     render() {
         if (this.props.friendData.length > 0) {
             let mesElements
-            debugger
-            let friendElements = this.props.friendData.map(frined => <Friends loadMessages={this.loadMessages}
-                                                                              name={frined.name} id={frined.id}
-                                                                              img={frined.photos.small ? frined.photos.small : minion}/>)
+            let friendElements = this.props.friendData.map(frined => {
+                let f = false
+                if (this.state.first) {
+                    f = true
+                    this.state.first = false
+                }
+                return <Friends first={f} loadMessages={this.loadMessages}
+                                name={frined.name} id={frined.id}
+                                img={frined.photos.small ? frined.photos.small : minion}/>
+            })
+
 
             if (this.props.mesData.length > 0) {
+                debugger
                 mesElements = this.props.mesData.map((mes) => {
                     if (mes.recipientId === this.state.id) {
                         this.state.lastMessage = mes.id
@@ -90,7 +104,6 @@ class Dialog extends React.Component {
                 })
             }
             let addNewMessage = (values) => {
-                debugger
                 if (values.newMessage) {
                     this.props.deleteAllMessage()
                     this.props.sendMessages(values.newMessage, this.state.id)

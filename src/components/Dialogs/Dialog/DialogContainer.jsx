@@ -7,6 +7,7 @@ import {
 } from "../../../redux/dialogReducer";
 import Dialog from "./Dialog";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {
@@ -37,6 +38,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
+const DialogContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(Dialog))
 
 export default DialogContainer;
