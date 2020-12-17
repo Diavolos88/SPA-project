@@ -4,8 +4,9 @@ My first project (SPA), written in react + redux, posted on GitHub Pages link ht
 
 Right now you can`t to register, you can use login and password for testing (don`t use please incognito mode):
 
-login: free@samuraijs.com 
-password: free
+login: testacctester@yandex.ru
+
+password: qwerty123456
 
 or you can register here: https://social-network.samuraijs.com/ (unfortunately, so far it is impossible to register from my page)
 
