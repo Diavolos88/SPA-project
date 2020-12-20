@@ -29,23 +29,22 @@ class Dialog extends React.Component {
             () => {
                 usersAPI.checkNewMessages().then((response) => {
                     if (response) {
-                        let newLast = 0
-                        let mesElements = this.props.mesData.map((mes) => {
-                            if (mes.recipientId === this.state.id) {
-                                newLast = mes.id
-                            } else if (mes.senderId === this.state.id) {
-                                newLast = mes.id
-                            }
-                        })
-                        if (newLast !== this.state.lastMessage) {
-                            this.props.deleteAllMessage()
-                            this.props.getAllMessages(this.state.id)
-                        }
+                        this.props.deleteAllMessage()
+                        this.props.getAllMessages(this.state.id)
                     }
                 })
             },
             1000
         );
+        // if (document.getElementById('123')) {
+        //     alert("Pressed");
+        //     document.addEventListener('keydown', function(e) {
+        //         if (e.code == 13) {
+        //             document.getElementById('123').click();
+        //             alert("Pressed");
+        //         }
+        //     });
+        // }
     }
 
     componentDidUpdate() {
@@ -57,6 +56,14 @@ class Dialog extends React.Component {
                 this.state.id = Number(this.props.match.params.userId)
             }
             this.props.getAllMessages(this.state.id)
+        }
+        if (document.getElementById('123')) {
+            let a = (e) => {
+                if (e.code == "Enter") {
+                    document.getElementById('123').click();
+                }
+            }
+            document.addEventListener('keyup', a)
         }
     }
 
@@ -104,8 +111,9 @@ class Dialog extends React.Component {
                 })
             }
             let addNewMessage = (values) => {
-                if (values.newMessage) {
+                if (values.newMessage && values.newMessage.length > 1) {
                     this.props.deleteAllMessage()
+                    values.newMessage = values.newMessage.substring(0, values.newMessage.length - 1)
                     this.props.sendMessages(values.newMessage, this.state.id)
                 }
             }
@@ -166,7 +174,7 @@ const
     AddMessageForm = (props) => {
         return (
             <form className={s.formC} onSubmit={props.handleSubmit}>
-                <button className={s.sendMesBut}>Send Message</button>
+                <button id={"123"} className={s.sendMesBut}>Send Message</button>
                 <Field name={"newMessage"} component={"textarea"} placeholder={"Enter your message"}
                        className={s.textArea}></Field>
             </form>

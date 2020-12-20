@@ -1,6 +1,4 @@
 import {usersAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
-import {getUserProfile, setUserProfile} from "./profileReducer";
 
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const UPDATE_MESSAGE_VALUE = 'UPDATE_MESSAGE_VALUE'
@@ -9,12 +7,19 @@ const DELETE_FRIENDS = 'DELETE_FRIENDS'
 const GET_MESSAGES = 'GET_MESSAGES'
 const DELETE_MESSAGES = 'DELETE_MESSAGES'
 
-let initialState = {
+type initialStateType = {
+    friendData: any,
+    mesData: any
+}
+
+let initialState: initialStateType = {
     friendData: {},
     mesData: {}
 }
 
-const dialogReducer = (state = initialState, action) => {
+
+
+const dialogReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let message = {
@@ -58,50 +63,52 @@ const dialogReducer = (state = initialState, action) => {
 }
 
 
-export const updateAllFriends = (page) => {
-    return async (dispatch) => {
+export const updateAllFriends = (page: any) => {
+    return async (dispatch: any) => {
         const response = await usersAPI.getFriends(page)
             dispatch(updateFriends(response.items))
     }
 }
 
 export const deleteAllFriends = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         dispatch(deleteFriends())
     }
 }
 
 
 export const deleteAllMessage = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         dispatch(deleteMessages())
     }
 }
 
 
-export const getAllMessages = (id) => {
-    return async (dispatch) => {
+export const getAllMessages = (id: number) => {
+    return async (dispatch: any) => {
         const response = await usersAPI.getMessages(id)
-        debugger
         dispatch(getMessagesAC(response.items))
     }
 }
 
-export const getMessagesAC= (messages) => {
+type getMessagesACType = {
+    type: typeof GET_MESSAGES, messages: string
+}
+
+export const getMessagesAC= (messages: string): getMessagesACType => {
     return {type: GET_MESSAGES, messages: messages}
 }
 
 
-export const sendMessages = (message, id) => {
-    return async (dispatch) => {
+export const sendMessages = (message: string, id: number) => {
+    return async (dispatch: any) => {
         let response = await usersAPI.sendNewMessages(message, id)
         response = await usersAPI.getMessages(id)
-        debugger
         dispatch(getMessagesAC(response.items))
     }
 }
 
-export const updateFriends = (friendData) => {
+export const updateFriends = (friendData: any) => {
     return {type: UPDATE_USERS_VALUE, friendData: friendData}
 }
 
@@ -113,7 +120,11 @@ export const deleteMessages = () => {
     return {type: DELETE_MESSAGES}
 }
 
-export const addMessageCreatorAction = (messageValue) => {
+type addMessageCreatorActionType = {
+    type: typeof UPDATE_MESSAGE_VALUE, messageValue: string
+}
+
+export const addMessageCreatorAction = (messageValue: string): addMessageCreatorActionType => {
     return {type: UPDATE_MESSAGE_VALUE, messageValue: messageValue}
 }
 

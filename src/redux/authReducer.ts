@@ -8,44 +8,56 @@ const GET_CAPTCHA_URL_SACCESS = 'GET_CAPTCHA_URL_SACCESS'
 const UPDATE_AUTH_AVA = 'UPDATE_AUTH_AVA'
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
+    userId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false,
-    authAva: null,
-    captchaUrl: null
-
+    authAva: null as string | null,
+    captchaUrl: null as string | null
 }
-const authReduser = (state = initialState, action) => {
+
+export type initialStateType = typeof initialState
+
+
+const authReduser = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SET_USER_DATA: {
-            let copy = {
+            return {
                 ...state,
                 ...action.data
             }
-            return copy
         }
         case SET_USER_AVA: {
-            let copy = {
+            return {
                 ...state,
                 authAva: action.img
             }
-            return copy
         }
         case GET_CAPTCHA_URL_SACCESS: {
-            let copy = {
+            return {
                 ...state,
                 captchaUrl: action.captchaUrl
             }
-            return copy
         }
         default:
             return state
     }
 }
 
-export const setUserData = (userId, email, login, isAuth) => {
-    debugger
+
+type setUserDataActionDataType = {
+    userId: number | null,
+    email: string | null,
+    login: string | null,
+    isAuth: boolean | null
+}
+
+type setUserDataActionType = {
+    type: typeof SET_USER_DATA,
+    data: setUserDataActionDataType
+}
+
+export const setUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean | null): setUserDataActionType => {
     return {
         type: SET_USER_DATA, data: {
             userId: userId,
@@ -56,33 +68,42 @@ export const setUserData = (userId, email, login, isAuth) => {
     }
 }
 
-export const setUserAva = (img) => {
+type setUserAvaDataActionType = {
+    type: typeof SET_USER_AVA,
+    img: string
+}
+
+export const setUserAva = (img: string): setUserAvaDataActionType => {
     return {
         type: SET_USER_AVA, img: img
     }
 }
 
-export const getCaptchaUrlSuccess = (captchaUrl) => {
+type getCaptchaUrlSuccessActionType = {
+    type: typeof GET_CAPTCHA_URL_SACCESS,
+    captchaUrl: string
+}
+
+export const getCaptchaUrlSuccess = (captchaUrl: string): getCaptchaUrlSuccessActionType => {
     return {
         type: GET_CAPTCHA_URL_SACCESS, captchaUrl: captchaUrl
     }
 }
 
 export const getMe = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         let response = await usersAPI.author()
         let {login, id, email} = response.data
         if (response.resultCode === 0) {
             dispatch(setUserData(id, email, login, true))
-            usersAPI.getOneUser(id).then(response => {
-                dispatch(setUserAva(response.photos.small))
-            })
+            response = await usersAPI.getOneUser(id)
+            dispatch(setUserAva(response.photos.small))
         }
     }
 }
 
-export const login = (email, password, rememberMe = false, captcha) => {
-    return async (dispatch) => {
+export const login = (email: string, password: string, rememberMe = false, captcha: any) => {
+    return async (dispatch: any) => {
         let response = await usersAPI.login(email, password, rememberMe, captcha)
         if (response.data.resultCode === 0) {
             dispatch(getMe())
@@ -98,7 +119,7 @@ export const login = (email, password, rememberMe = false, captcha) => {
 }
 
 export const logout = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         let response = await usersAPI.logout()
         if (response.data.resultCode === 0) {
             dispatch(setUserData(null, null, null, false))
@@ -106,8 +127,7 @@ export const logout = () => {
     }
 }
 
-export const getCaptchaUrl = () => async (dispatch) =>
-{
+export const getCaptchaUrl = () => async (dispatch: any) => {
     let response = await securityAPI.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))
