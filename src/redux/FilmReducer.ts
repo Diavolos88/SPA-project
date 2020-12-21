@@ -38,7 +38,9 @@ let initialState = {
     ]
 }
 
-const filmReducer = (state = initialState, action) => {
+type initialStateType = typeof initialState
+
+const filmReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case ADD_FILM_CARD: {
             let stateCopy = {...state}
@@ -50,6 +52,7 @@ const filmReducer = (state = initialState, action) => {
                 title: stateCopy.inputValue.titleValue,
                 year: stateCopy.inputValue.yearValue,
             }
+            // @ts-ignore
             stateCopy.cards.push(film)
             stateCopy.inputValue.titleValue = ''
             stateCopy.inputValue.descriptionValue = ''
@@ -86,23 +89,33 @@ const filmReducer = (state = initialState, action) => {
     }
 }
 
-export const addFilmCardActionCreator = () => {
+type addFilmCardActionCreatorType ={type: typeof ADD_FILM_CARD}
+
+export const addFilmCardActionCreator = (): addFilmCardActionCreatorType => {
     return {type: ADD_FILM_CARD}
 }
 
-export const changeImgActionCreator = img => {
+type changeImgActionCreatorType = {type: typeof UPDATE_IMG_VALUE, imgValue: string}
+
+export const changeImgActionCreator = (img: string): changeImgActionCreatorType => {
     return {type: UPDATE_IMG_VALUE, imgValue: img}
 }
 
-export const changeTitleActionCreator = (title) => {
+type changeTitleActionCreatorType = {type: typeof UPDATE_TITLE_VALUE, titleValue: string}
+
+export const changeTitleActionCreator = (title: string): changeTitleActionCreatorType => {
     return {type: UPDATE_TITLE_VALUE, titleValue: title}
 }
 
-export const changeDescriptionActionCreator = (description) => {
+type changeDescriptionActionCreatorType = {type: typeof UPDATE_DESCRIPTION_VALUE, descriptionValue: string}
+
+export const changeDescriptionActionCreator = (description: string): changeDescriptionActionCreatorType => {
     return {type: UPDATE_DESCRIPTION_VALUE, descriptionValue: description}
 }
 
-export const changeYearActionCreator = (year) => {
+type changeYearActionCreatorType = {type: typeof UPDATE_YEAR_VALUE, yearValue: string}
+
+export const changeYearActionCreator = (year: string): changeYearActionCreatorType => {
     return {type: UPDATE_YEAR_VALUE, yearValue: year}
 }
 

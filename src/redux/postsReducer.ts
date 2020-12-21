@@ -24,7 +24,7 @@ let initialState = {
     ]
 }
 
-const postsReducer = (state = initialState, action) => {
+const postsReducer = (state = initialState, action: any) => {
     if (action.type === ADD_POSTS_CARD) {
         let post = {
             name: action.name,
@@ -36,7 +36,7 @@ const postsReducer = (state = initialState, action) => {
     return state
 }
 
-export const addPostsActionCreator = (title, desc, name, ava) => {
+export const addPostsActionCreator = (title: string, desc: string, name: string, ava: string) => {
     return {type: ADD_POSTS_CARD, title:title, desc:desc, name:name, ava:ava}
 }
 
