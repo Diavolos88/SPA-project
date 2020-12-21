@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import s from './Status.module.css';
 
-const StatusWithHooks = (props) => {
+type propsType = {
+    status: string
+    isOwner: boolean
+    updateUserStatus: Function
+}
+
+const StatusWithHooks = (props: propsType) => {
 
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
@@ -16,7 +22,7 @@ const StatusWithHooks = (props) => {
         }
     }
 
-    const onStatusStage = (e) => {
+    const onStatusStage = (e: any) => {
         setStatus(e.currentTarget.value)
     }
 
