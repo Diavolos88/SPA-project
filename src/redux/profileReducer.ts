@@ -6,8 +6,37 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const SAVE_PHOTO = 'SAVE_PHOTO'
 
-let initialState = {
+type initialStateType = {
+    status: string
+    profile?: Array<userProfileType>
+}
+
+let initialState: initialStateType = {
     status: '',
+}
+
+type photoType = {
+    small: string | null,
+    large: string | null
+}
+
+export type userProfileType = {
+    aboutMe: string | null,
+    contacts: {
+        facebook: string | null,
+        website: string | null,
+        vk: string | null,
+        twitter: string | null,
+        instagram: string | null,
+        youtube: string | null,
+        github: string | null,
+        mainLink: string | null
+    },
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string | null,
+    fullName: string | null,
+    userId: number,
+    photos: photoType
 }
 
 const profileReduser = (state = initialState, action: any): any => {
@@ -24,8 +53,8 @@ const profileReduser = (state = initialState, action: any): any => {
             return copy
         }
         case SAVE_PHOTO: {
-            // @ts-ignore
             let copy = {...state, profile: {...state.profile}}
+            // @ts-ignore
             copy.profile.photos = action.photos
             return copy
         }

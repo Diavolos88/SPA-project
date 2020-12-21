@@ -1,7 +1,8 @@
 import React from 'react';
 import {
     changeCurrentPage, follow,
-    getUsers,
+    getUsers, initialStateTypeUsersReduser,
+    setUsers,
     toggleFollowingInProgress, unfollow
 } from "../../redux/usersReducer";
 import {connect} from "react-redux";
@@ -15,20 +16,36 @@ import {
     getUsersData
 } from "../../redux/usersSelectors";
 import {Redirect} from "react-router-dom";
+import {AppStateType} from '../../redux/reduxStore';
 
-class UserContainer extends React.Component {
+type MapStateToPropsType = {
+    users: initialStateTypeUsersReduser
+    isAuth: boolean
+}
+
+type MapDispatchToPropsType = {
+    getUsers: Function
+    setUsers: Function
+    unfollow: (id: number) => void
+    follow: (id: number) => void
+    changeCurrentPage: Function
+    toggleFollowingInProgress: Function
+}
+
+type PropsType = MapDispatchToPropsType & MapStateToPropsType
+
+class UserContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.getUsers(this.props.users.currentPage, this.props.users.pageSize)
     }
 
-    getUsers = () => {
-        if (this.props.users.usersData.length === 0) {
-            usersAPI.getUsers(this.props.users.currentPage, this.props.users.pageSize).then(data => {
-                this.props.setUsers(data.items)
-            })
+    getUsers = async () => {
+        if (this.props.users.usersData && this.props.users.usersData.length === 0) {
+            let data = await usersAPI.getUsers(this.props.users.currentPage, this.props.users.pageSize)
+            this.props.setUsers(data.items)
         }
     }
-    onPageChenged = (e) => {
+    onPageChenged = (e: number) => {
         this.props.getUsers(e, this.props.users.pageSize)
         this.props.changeCurrentPage(e)
     }
@@ -40,7 +57,7 @@ class UserContainer extends React.Component {
                 <Users currentPage={this.props.users.currentPage}
                        totalUsersCount={this.props.users.totalUsersCount}
                        pageSize={this.props.users.pageSize}
-                       usersData={this.props.users.usersData}
+                       usersData={this.props.users.usersData ? this.props.users.usersData : []}
                        unfollow={this.props.unfollow}
                        follow={this.props.follow}
                        toggleFollowingInProgress={this.props.toggleFollowingInProgress}
@@ -51,7 +68,7 @@ class UserContainer extends React.Component {
 
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         isAuth: state.auth.isAuth,
         users: getUsersData(state),
@@ -63,12 +80,15 @@ let mapStateToProps = (state) => {
     }
 }
 
-let UsersContainer = connect(mapStateToProps, {
+type OwnPropsType = {}
+
+let UsersContainer = connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
     changeCurrentPage,
     toggleFollowingInProgress,
     getUsers,
+    setUsers
 })(UserContainer)
 
 

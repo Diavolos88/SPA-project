@@ -4,72 +4,61 @@ let API1 = '8590e90d-01e0-4847-847c-db8ee78fb5fe'
 let API2 = '22395bfc-7398-496d-9f45-225bad08b7ff'
 let API3 = '9231f2ee-2112-4390-9b16-f5a875f052b1'
 
-// @ts-ignore
 let instans = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
-        "API-KEY": API1
-    }
+        "API-KEY": API1}
 });
 
 export const usersAPI = {
-    async getUsers(currentPage = 1, pageSize = 4) {
-        let data = await instans.get(`users?page=${currentPage}&count=${pageSize}`)
-        return data.data
+    getUsers(currentPage = 1, pageSize = 4) {
+        return instans.get(`users?page=${currentPage}&count=${pageSize}`
+        ).then(response => response.data)
     },
-    async follow(id: number) {
-        let data = await instans.post(`follow/${id}`)
-        return data.data
+    follow(id) {
+        return instans.post(`follow/${id}`).then(response => response.data)
     },
-    async unfollow(id: number) {
-        let data = await instans.delete(`follow/${id}`)
-        return data.data
+    unfollow(id) {
+        return instans.delete(`follow/${id}`).then(response => response.data)
     },
     author() {
-        // @ts-ignore
-        return instans.get(`auth/me/`).then(response => {
+        return instans.get(`auth/me/`).then(response =>
+        {
             if (response.data.data.id === 13370) {
-                // @ts-ignore
                 instans = axios.create({
                     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
                     withCredentials: true,
                     headers: {
-                        "API-KEY": API2
-                    }
+                        "API-KEY":API2}
                 });
-            } else if (response.data.data.id === 13292) {
-                // @ts-ignore
+            } else if (response.data.data.id === 13292){
                 instans = axios.create({
                     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
                     withCredentials: true,
-                    headers: {"API-KEY": API3}
+                    headers: {"API-KEY":API3}
                 });
-            } else {
-                // @ts-ignore
+            }else {
                 instans = axios.create({
                     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
                     withCredentials: true,
                     headers: {
-                        "API-KEY": API1
-                    }
+                        "API-KEY":API1}
                 });
             }
             return response.data
         })
     },
-    async getOneUser(id: number) {
-        let data = await instans.get(`profile/` + id)
-        return data.data
+    getOneUser(id) {
+        return instans.get(`profile/` + id).then(response => response.data)
     },
-    async getUserStatus(id: number) {
-        let data = await instans.get(`profile/status/` + id)
-        return data.data
+    getUserStatus(id) {
+        return instans.get(`profile/status/` + id).then(response => response).then(response => response.data)
     },
-    updateUserStatus(status: string): any {
+    updateUserStatus(status) {
         return instans.put(`profile/status`, {status: status})
     },
-    login(email: string, password: string, rememberMe = false, captcha?: any): any {
+    login(email, password, rememberMe = false, captcha = null) {
         return instans.post(`auth/login`, {
             email, password, rememberMe, captcha
         })
@@ -77,7 +66,7 @@ export const usersAPI = {
     logout() {
         return instans.delete(`auth/login`)
     },
-    savePhoto(photoFile: any) {
+    savePhoto(photoFile) {
         const formData = new FormData()
         formData.append("image", photoFile)
 
@@ -87,23 +76,23 @@ export const usersAPI = {
             }
         })
     },
-    saveProfile(profile: any): any {
+    saveProfile(profile) {
         return instans.put(`profile/`, profile)
     },
-    async getFriends(page: any) {
-        let data = await instans.get(`users?page=${page}&friend=${true}`)
-        return data.data
+    getFriends(page) {
+        return instans.get(`users?page=${page}&friend=${true}`
+        ).then(response => response.data)
     },
-    async getMessages(id: number) {
-        let data = await instans.get(`dialogs/${id}/messages`)
-        return data.data
+    getMessages(id) {
+        return instans.get(`dialogs/${id}/messages`
+        ).then(response => response.data)
     },
-    sendNewMessages(message: string, id: number): any {
-        return instans.post(`dialogs/${id}/messages`, {body: message})
+    sendNewMessages(message, id) {
+        return instans.post(`dialogs/${id}/messages`, {body: message}
+        )
     },
-    async checkNewMessages() {
-        let data = await instans.get(`dialogs/messages/new/count`)
-        return data.data
+    checkNewMessages() {
+        return instans.get(`dialogs/messages/new/count`).then(response => response.data)
     }
 }
 

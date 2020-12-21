@@ -1,33 +1,28 @@
-import { reducersType } from "./reduxStore"
+import { AppStateType } from "./reduxStore"
+import {initialStateTypeUsersReduser} from "./usersReducer";
 
 
-export const getUsersData = (state: reducersType) => {
-    // @ts-ignore
+export const getUsersData = (state: AppStateType): initialStateTypeUsersReduser => {
     return state.usersData
 }
 
-export const getPageSizeData = (state: reducersType) => {
-    // @ts-ignore
-    return state.pageSize
+export const getPageSizeData = (state: AppStateType): number => {
+    return state.usersData.pageSize
 }
 
-export const getTotalUsersCountData = (state: reducersType) => {
-    // @ts-ignore
-    return state.totalUsersCount
+export const getTotalUsersCountData = (state: AppStateType): number => {
+    return state.usersData.totalUsersCount
 }
 
-export const getCurrentPageData = (state: reducersType) => {
-    // @ts-ignore
-    return state.currentPage
+export const getCurrentPageData = (state: AppStateType): number => {
+    return state.usersData.currentPage
 }
 
-export const getIsFetchingData = (state: reducersType) => {
-    // @ts-ignore
-    return state.isFetching
+export const getIsFetchingData = (state: AppStateType): boolean => {
+    return state.usersData.isFetching
 }
 
-export const getFollowingInProgressData = (state: reducersType) => {
-    // @ts-ignore
-    return state.followingInProgress
+export const getFollowingInProgressData = (state: AppStateType): boolean => {
+    return state.usersData.followingInProgress
 }
 

@@ -20,15 +20,11 @@ let reducers = combineReducers({
     app: appReducer
 })
 
-export type reducersType = typeof reducers
+type reducersType = typeof reducers
+export type AppStateType = ReturnType<reducersType>
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers,composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-// let store = createStore(reducers, applyMiddleware(thunkMiddleware))
-
 export default store
-
-// this._state.reccomendData.inputValue = inputFilmReducer(this._state.reccomendData.inputValue, action)
-// this._state.dialogsData.inputValue = inputMessageReducer(this._state.dialogsData.inputValue, action)
