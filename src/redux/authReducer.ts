@@ -1,4 +1,4 @@
-import {securityAPI, usersAPI} from "../api/api";
+import {ResultCodeEnum, securityAPI, usersAPI} from "../api/api";
 import {setUserProfile} from "./profileReducer";
 import {stopSubmit} from "redux-form";
 
@@ -94,10 +94,11 @@ export const getMe = () => {
     return async (dispatch: any) => {
         let response = await usersAPI.author()
         let {login, id, email} = response.data
-        if (response.resultCode === 0) {
+        if (response.resultCode === ResultCodeEnum.Success) {
             dispatch(setUserData(id, email, login, true))
-            response = await usersAPI.getOneUser(id)
-            dispatch(setUserAva(response.photos.small))
+            let response2 = await usersAPI.getOneUser(id)
+            if (response2.photos && response2.photos.small)
+            dispatch(setUserAva(response2.photos.small))
         }
     }
 }

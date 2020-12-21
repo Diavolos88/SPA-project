@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {getMessagesResponseItemType, usersAPI} from "../api/api";
 
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const UPDATE_MESSAGE_VALUE = 'UPDATE_MESSAGE_VALUE'
@@ -87,15 +87,15 @@ export const deleteAllMessage = () => {
 export const getAllMessages = (id: number) => {
     return async (dispatch: any) => {
         const response = await usersAPI.getMessages(id)
-        dispatch(getMessagesAC(response.items))
+        dispatch(getMessagesAC(response.data.items))
     }
 }
 
 type getMessagesACType = {
-    type: typeof GET_MESSAGES, messages: string
+    type: typeof GET_MESSAGES, messages: Array<getMessagesResponseItemType>
 }
 
-export const getMessagesAC= (messages: string): getMessagesACType => {
+export const getMessagesAC= (messages: Array<getMessagesResponseItemType>): getMessagesACType => {
     return {type: GET_MESSAGES, messages: messages}
 }
 
@@ -104,7 +104,7 @@ export const sendMessages = (message: string, id: number) => {
     return async (dispatch: any) => {
         let response = await usersAPI.sendNewMessages(message, id)
         response = await usersAPI.getMessages(id)
-        dispatch(getMessagesAC(response.items))
+        dispatch(getMessagesAC(response.data.items))
     }
 }
 

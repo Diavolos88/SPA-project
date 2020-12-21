@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import s from './Profile.module.css';
 import {Field, reduxForm} from "redux-form";
-import handleSubmit from "redux-form/lib/handleSubmit";
 
+// @ts-ignore
 const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
         <label className={s.label}>{label}</label>
@@ -13,8 +13,12 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     </div>
 );
 
+type propsType = {
+    handleSubmit: any
+    error: any
+}
 
-const ProfileDataForm = (props) => {
+const ProfileDataForm = (props: propsType) => {
     return (
         <form className={s.second__column} onSubmit={props.handleSubmit}>
             <div>Looking For A Job:</div>

@@ -2,10 +2,21 @@ import React, {useState} from 'react'
 import s from './Profile.module.css';
 import StatusWithHooks from "./Status/StatusWithHooks";
 import minion from "../../img/minion.png"
-import ProfileDataFormReduxForm from "./ProfileDataForm.jsx";
+import ProfileDataFormReduxForm from "./ProfileDataForm";
 import {NavLink, Redirect} from "react-router-dom";
+import {userProfileType} from '../../redux/profileReducer';
 
-let ProfileData = (props) => {
+type propsType = {
+    status: string
+    updateUserStatus: Function
+    isOwner: boolean
+    lookingForAJob: boolean
+    profile: userProfileType
+    goToEditMode: () => void
+    contact: Array<JSX.Element>
+}
+
+let ProfileData = (props: propsType) => {
     return (
         <div className={s.second__column}>
             <span>Status:</span>
@@ -25,12 +36,21 @@ let ProfileData = (props) => {
     );
 }
 
+type propsProfileType = {
+    saveProfile: Function
+    savePhoto: Function
+    profile: userProfileType
+    isOwner: boolean
+    status: string
+    updateUserStatus: Function
+    lookingForAJob: boolean
+}
 
-let Profile = (props) => {
+let Profile = (props: propsProfileType) => {
 
     let [editMode, setEditMode] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = (e: any) => {
         props.saveProfile(e).then(() => {
             setEditMode(false)
         })
@@ -40,7 +60,7 @@ let Profile = (props) => {
         setEditMode(true)
     }
 
-    const onMainPhotoSelector = (e) => {
+    const onMainPhotoSelector = (e: any) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0])
         }
@@ -51,7 +71,9 @@ let Profile = (props) => {
     } else {
         let contact = []
         for (let key in props.profile.contacts) {
+            // @ts-ignore
             if (props.profile.contacts[key]) {
+                // @ts-ignore
                 contact.push(<div className={s.contacts__item}>{key + ": "}{props.profile.contacts[key]}</div>)
             }
         }
@@ -67,8 +89,7 @@ let Profile = (props) => {
                         </NavLink>
                     }
                 </div>
-                {editMode ? <ProfileDataFormReduxForm initialValues={props.profile} {...props} contact={contact}
-                                                      onSubmit={onSubmit}/>
+                {editMode ? <ProfileDataFormReduxForm initialValues={props.profile} {...props} onSubmit={onSubmit}/>
                     : <ProfileData {...props} goToEditMode={toggleEditMode} contact={contact}/>}
             </div>
         );

@@ -15,28 +15,26 @@ let initialState: initialStateType = {
     status: '',
 }
 
-type photoType = {
-    small: string | null,
-    large: string | null
-}
-
 export type userProfileType = {
     aboutMe: string | null,
     contacts: {
-        facebook: string | null,
-        website: string | null,
-        vk: string | null,
-        twitter: string | null,
-        instagram: string | null,
-        youtube: string | null,
-        github: string | null,
-        mainLink: string | null
+        facebook?: string | null,
+        website?: string | null,
+        vk?: string | null,
+        twitter?: string | null,
+        instagram?: string | null,
+        youtube?: string | null,
+        github?: string | null,
+        mainLink?: string | null
     },
     lookingForAJob: boolean,
     lookingForAJobDescription: string | null,
     fullName: string | null,
     userId: number,
-    photos: photoType
+    photos: {
+        small: string | null,
+        large: string | null
+    }
 }
 
 const profileReduser = (state = initialState, action: any): any => {
@@ -124,7 +122,9 @@ export const savePhoto = (photo: any) => {
             if (response2.resultCode === 0) {
                 dispatch(setUserData(id, email, login, true))
                 let response3 = await usersAPI.getOneUser(id)
-                dispatch(setUserAva(response3.photos.small))
+                if (response3.photos && response3.photos.small) {
+                    dispatch(setUserAva(response3.photos.small))
+                }
             }
         }
     }
