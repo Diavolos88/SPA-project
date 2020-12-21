@@ -1,6 +1,6 @@
 # React App social network
 
-My first project (SPA), written in react + redux, posted on GitHub Pages link https://diavolos88.github.io/SPA-project/
+My first project (SPA), written in react + redux + typescript, posted on GitHub Pages link https://diavolos88.github.io/SPA-project/
 
 Right now you can`t to register, you can use login and password for testing (don`t use please incognito mode):
 
